@@ -26,5 +26,4 @@ const JobSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-// (2) sang controllers
 module.exports = mongoose.model('Job', JobSchema)

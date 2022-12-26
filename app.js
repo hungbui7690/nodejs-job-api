@@ -18,6 +18,7 @@ const jobsRouter = require('./routes/jobs')
 // middlewares
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
+const authenticationMiddleware = require('./middleware/authentication')
 
 // =============================================
 // MIDDLEWARES & ROUTES
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/jobs', jobsRouter)
+app.use('/api/v1/jobs', authenticationMiddleware, jobsRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
